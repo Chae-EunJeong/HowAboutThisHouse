@@ -1,0 +1,20 @@
+.search__form__container {
+  padding: var(--size-large);
+}
+.search__form__container button {
+  padding-bottom: 0;
+}
+.search__form__sub-btn {
+  font-size: 2rem;
+  color: var(--color-main-point);
+}
+
+.search__form__sub-btn:hover {
+  color: var(--color-main-hover);
+}
+
+#sido,
+#gugun,
+#dong {
+  border: 1px solid var(--color-light-grey);
+}

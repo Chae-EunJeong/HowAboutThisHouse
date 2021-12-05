@@ -1,0 +1,83 @@
+@import "./reset.css";
+@import "./common.css";
+
+.interest {
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: calc(2 * var(--size-large)) 0;
+  background-color: var(--color-white);
+}
+.interest__container {
+  width: 1200px;
+  padding: calc(2 * var(--size-large));
+  border-radius: var(--size-small);
+  text-align: center;
+}
+.interest__header__title {
+  color: var(--color-black);
+  font-size: var(--font-big);
+  font-weight: var(--weight-semi-bold);
+}
+.interest__header__container {
+  margin: var(--size-large);
+  /* background-color: var(--color-light-grey); */
+  border: 1px solid var(--color-light-grey);
+  border-radius: 10px;
+}
+.interest__header__describe {
+  padding-top: var(--size-large);
+}
+.interest__header__describe span {
+  font-size: var(--size-large);
+}
+/*사용자가 선택한 관심지역 리스트*/
+.interest__header__interest-list {
+  display: flex;
+  justify-content: center;
+}
+.interest__items {
+  background-color: var(--color-main-back);
+  padding: 8px 12px;
+  border-radius: 20px;
+  margin: var(--size-regular);
+}
+.interest__items__name {
+  font-size: var(--size-medium);
+  padding-right: var(--size-micro);
+  font-weight: var(--weight-bold);
+}
+.interest__items__name:hover {
+  color: var(--color-dark-grey);
+  cursor: pointer;
+}
+.interest__items__icon:hover {
+  color: var(--color-grey);
+  cursor: pointer;
+}
+.interest__menu__tab {
+  display: flex;
+  justify-content: center;
+  padding-top: var(--size-large);
+}
+.interest__menu__tab ul {
+  display: flex;
+  text-align: center;
+}
+.interest__tab__item {
+  padding: var(--size-medium);
+  font-size: var(--font-medium);
+}
+.interest__tab__item:hover {
+  border-radius: 4px;
+  background-color: var(--color-shadow);
+  cursor: pointer;
+}
+.interest__tab__item.active {
+  font-weight: var(--weight-bold);
+  border-bottom: var(--size-micro) solid black;
+}
+.interest__map__container {
+  display: flex;
+}

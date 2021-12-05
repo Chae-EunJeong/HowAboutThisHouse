@@ -1,0 +1,312 @@
+.detailtest {
+  padding-left: 15px;
+}
+/*  */
+.housecontainer1 {
+  overflow-y: scroll;
+  width: 100vw;
+  height: 87vh;
+  border-collapse: collapse;
+}
+/*  */
+.housecontainer {
+  overflow-y: scroll;
+  width: 100vw;
+  height: 90vh;
+  border-collapse: collapse;
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+}
+/*  */
+.mouse-over-bgcolor {
+  background-color: lightblue;
+}
+.underscore {
+  border-bottom: 1px solid #444444;
+  padding: 10px;
+}
+/*  */
+.house__header__btn {
+  margin-bottom: 0;
+  padding: var(--size-small);
+  border-radius: var(--size-micro);
+  color: var(--color-white);
+  background-color: var(--color-main-point);
+}
+.showfilter,
+.showfilter2 {
+  position: absolute;
+  z-index: 2;
+  background-color: white;
+  width: 300px;
+  /* height: 150px; */
+  margin: 10px auto;
+  /* line-height: 70px; */
+  text-align: center;
+  border-radius: 1em;
+  border: 1px solid black;
+}
+.showfilter2 {
+  left: -200px;
+}
+.pricebar {
+  margin: 0;
+  padding: 0;
+  margin-top: 10px;
+  box-sizing: border-box;
+}
+.pricebar-content {
+  padding: 40px 15px;
+}
+/*  */
+#map {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  z-index: 1;
+}
+.map_wrap,
+.map_wrap * {
+  margin: 0;
+  padding: 0;
+  font-family: "Malgun Gothic", dotum, "돋움", sans-serif;
+  font-size: 12px;
+}
+.map_wrap {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+#category {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  border-radius: 5px;
+  border: 1px solid #909090;
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.4);
+  background: #fff;
+  overflow: hidden;
+  z-index: 2;
+}
+#category li {
+  float: left;
+  list-style: none;
+  width: 50px;
+  border-right: 1px solid #acacac;
+  padding: 6px 0;
+  text-align: center;
+  cursor: pointer;
+}
+#category li.on {
+  background: #eee;
+}
+#category li:hover {
+  background: #ffe6e6;
+  border-left: 1px solid #acacac;
+  margin-left: -1px;
+}
+#category li:last-child {
+  margin-right: 0;
+  border-right: 0;
+}
+#category li span {
+  display: block;
+  margin: 0 auto 3px;
+  width: 27px;
+  height: 28px;
+}
+#category li .category_bg {
+  background: url(https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/places_category.png)
+    no-repeat;
+}
+#category li .bank {
+  background-position: -10px 0;
+}
+#category li .mart {
+  background-position: -10px -36px;
+}
+#category li .pharmacy {
+  background-position: -10px -72px;
+}
+#category li .oil {
+  background-position: -10px -108px;
+}
+#category li .cafe {
+  background-position: -10px -144px;
+}
+#category li .store {
+  background-position: -10px -180px;
+}
+#category li.on .category_bg {
+  background-position-x: -46px;
+}
+.placeinfo_wrap {
+  position: absolute;
+  bottom: 28px;
+  left: -150px;
+  width: 300px;
+}
+.placeinfo {
+  position: relative;
+  width: 100%;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  border-bottom: 2px solid #ddd;
+  padding-bottom: 10px;
+  background: #fff;
+}
+.placeinfo:nth-of-type(n) {
+  border: 0;
+  box-shadow: 0px 1px 2px #888;
+}
+.placeinfo_wrap .after {
+  content: "";
+  position: relative;
+  margin-left: -12px;
+  left: 50%;
+  width: 22px;
+  height: 12px;
+  background: url("https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/vertex_white.png");
+}
+.placeinfo a,
+.placeinfo a:hover,
+.placeinfo a:active {
+  color: #fff;
+  text-decoration: none;
+}
+.placeinfo a,
+.placeinfo span {
+  display: block;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+.placeinfo span {
+  margin: 5px 5px 0 5px;
+  cursor: default;
+  font-size: 13px;
+  color: black;
+}
+.placeinfo .title {
+  font-weight: bold;
+  font-size: 14px;
+  border-radius: 6px 6px 0 0;
+  margin: -1px -1px 0 -1px;
+  padding: 10px;
+  color: #fff;
+  background: #d95050;
+  background: #d95050
+    url(https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/arrow_white.png)
+    no-repeat right 14px center;
+}
+.placeinfo .tel {
+  color: #0f7833;
+}
+.placeinfo .jibun {
+  color: #999;
+  font-size: 11px;
+  margin-top: 0;
+}
+.info-title {
+  display: block;
+  background: #50627f;
+  color: #fff;
+  text-align: center;
+  height: 30px;
+  line-height: 22px;
+  border-radius: 4px;
+  padding: 0px 10px;
+}
+.wrap {
+  position: absolute;
+  left: 0;
+  bottom: -34px;
+  width: 288px;
+  height: 132px;
+  margin-left: -68px;
+  text-align: left;
+  overflow: hidden;
+  font-size: 12px;
+  font-family: "Malgun Gothic", dotum, "돋움", sans-serif;
+  line-height: 1.5;
+}
+.wrap * {
+  padding: 0;
+  margin: 0;
+}
+.wrap .info {
+  width: 286px;
+  height: 120px;
+  border-radius: 5px;
+  border-bottom: 2px solid #ccc;
+  border-right: 1px solid #ccc;
+  overflow: hidden;
+  background: #fff;
+}
+.wrap .info:nth-child(1) {
+  border: 0;
+  box-shadow: 0px 1px 2px #888;
+}
+.info .title {
+  padding: 5px 0 0 10px;
+  height: 30px;
+  background: #eee;
+  border-bottom: 1px solid #ddd;
+  font-size: 18px;
+  font-weight: bold;
+}
+.info .close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  color: #888;
+  width: 17px;
+  height: 17px;
+  background: url("https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/overlay_close.png");
+}
+.info .close:hover {
+  cursor: pointer;
+}
+.info .body {
+  position: relative;
+  overflow: hidden;
+}
+.info .desc {
+  position: relative;
+  margin: 13px 0 0 90px;
+  height: 75px;
+}
+.desc .ellipsis {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.desc .jibun {
+  font-size: 11px;
+  color: #888;
+  margin-top: -2px;
+}
+.info .img {
+  position: absolute;
+  top: 6px;
+  left: 5px;
+  width: 73px;
+  height: 71px;
+  border: 1px solid #ddd;
+  color: #888;
+  overflow: hidden;
+}
+.info:after {
+  content: "";
+  position: absolute;
+  margin-left: -12px;
+  left: 50%;
+  bottom: 0;
+  width: 22px;
+  height: 12px;
+  background: url("https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/vertex_white.png");
+}
+.info .link {
+  color: #5085bb;
+}
