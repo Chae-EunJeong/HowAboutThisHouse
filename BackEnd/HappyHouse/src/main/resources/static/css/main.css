@@ -1,0 +1,92 @@
+.main__section {
+  margin-bottom: 5rem;
+}
+/* main cover */
+.main__cover {
+  position: relative;
+}
+
+.main__cover img {
+  width: 100%;
+  height: 35rem;
+  filter: brightness(0.6);
+}
+
+.main__cover__contents {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.main__cover__contents p {
+  font-size: 3rem;
+  color: #fcce75;
+}
+
+.main__header__selector {
+  margin-top: calc(1.25rem * 2);
+  border-radius: 4px;
+  background-color: white;
+}
+
+/* main service introduction */
+.main__contents {
+  font-family: "Noto Sans KR", sans-serif;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.main__contents__intro {
+  display: flex;
+  margin-bottom: 1rem;
+  padding: 0 1.5rem;
+  font-size: 2rem;
+}
+
+.main__contents__intro h3 {
+  margin-bottom: 0;
+  color: white;
+  font-weight: 50;
+  font-style: italic;
+}
+
+.main__service {
+  display: flex;
+  padding: 8px 12px;
+}
+
+.main__service__card {
+  border: 1px solid #383b38;
+  list-style: none;
+  text-align: center;
+  margin: 5px;
+  background-color: #5b5e5b;
+}
+
+.main__service__card .card__img {
+  width: 100%;
+  height: 40%;
+}
+
+.main__service__card .card__descript {
+  padding: 8px 12px;
+  text-align: center;
+  font-size: 1rem;
+  color: #e7ebe7;
+}
+
+.main__service__card .card__title {
+  font-size: 1.5rem;
+}
+.main__service__card .card__btn {
+  margin: 1rem;
+  padding: 14px 40px;
+  border-radius: 8px;
+  transition-duration: 0.3s;
+  background-color: #2d302d;
+}
+.main__service__card .card__btn:hover {
+  background-color: #383b38;
+  color: #fcce75;
+}

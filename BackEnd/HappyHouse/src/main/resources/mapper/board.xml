@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+        
+<mapper namespace="com.ssafy.happyhouse.repository.mapper.BoardMapper">
+	<!-- 게시글 등록 -->
+	<insert id="insertBoard" parameterType="boardDto">
+		insert into board (
+			email, name, boardTitle, boardContent
+		) values (
+			#{email}, #{name}, #{boardTitle}, #{boardContent}
+		)
+	</insert>
+	<!-- 댓글 등록 -->
+	<insert id="insertComment" parameterType="commentDto">
+		insert into comment (
+			email, name, content, boardNo
+		) values (
+			#{email}, #{name}, #{content}, #{boardNo}
+		)
+	</insert>
+	<!-- 게시글 키워드 검색 - 제목, 내용 -->
+	<sql id="search">
+		<if test="word != null and word != ''">
+			<if test="key == 'boardTitle'">
+				and boardTitle like concat('%', #{word}, '%')
+			</if>
+			<if test="key != 'boardTitle'">
+				and boardContent like concat('%', #{word}, '%')
+			</if>
+		</if>
+	</sql>
+	<!-- 게시글 전체 조회 -->
+	<select id="selectAllBoard" parameterType="map" resultType="boardDto">
+		select boardNo, boardTitle, email, name, boardContent, 
+				case when date_format(regDate, '%Y%m%d') = date_format(now(), '%Y%m%d')
+				then date_format(regDate, '%H:%i:%s')
+				else date_format(regDate, '%Y.%m.%d')
+				end regDate
+		  from board 
+		<where>
+			<include refid="search"></include>
+		</where>
+		 order by boardNo desc
+		 limit #{start}, #{spp}
+	</select>
+	<!-- 게시글 수 -->
+	<select id="getTotalCount" parameterType="map" resultType="int">
+		select count(boardNo)
+		  from board
+		<where>
+			<include refid="search"></include>
+		</where>
+	</select>
+	<!-- 댓글 수 -->
+	<select id="getCommentCount" parameterType="int" resultType="int">
+		select count(*)
+		  from comment
+		 where boardNo = #{boardNo}
+	</select>
+	<!-- 게시글 상세 조회 -->
+	<select id="selectOneBoard" parameterType="int" resultType="boardDto">
+		select boardNo, boardTitle, email, name, boardContent, viewCnt, regDate
+		  from board 
+		 where boardNo = #{boardNo}
+	</select>
+	<!-- 댓글 상세 조회 -->
+	<select id="selectOneComment" parameterType="int" resultType="commentDto">
+		select commentNo, email, name, content, regDate, boardNo
+		  from comment 
+		 where boardNo = #{boardNo}
+	</select>
+	<!-- 댓글 전체 조회 -->
+	<select id="selectAllComment" parameterType="map" resultType="commentDto">
+		select commentNo, email, name, content, boardNo,regDate
+		  from comment 
+	</select>
+	<!-- 게시글 조회수 -->
+	<update id="updateViewCnt" parameterType="int">
+		update board
+		   set viewCnt = viewCnt + 1
+		 where boardNo = #{boardNo}
+	</update>
+	<!-- 게시글 수정 -->
+	<update id="updateBoard" parameterType="boardDto">
+		update board 
+		   set boardTitle = #{boardTitle}, 
+		   	   boardContent = #{boardContent}
+		 where boardNo = #{boardNo}
+	</update>
+	<!-- 게시글 삭제 -->
+	<delete id="deleteBoard" parameterType="int">
+		delete 
+		  from board 
+		 where boardNo = #{boardNo}
+	</delete>
+	<!-- 게시글 댓글 삭제 -->
+	<delete id="deleteComment" parameterType="int">
+		delete 
+		  from comment
+		 where boardNo = #{boardNo}
+	</delete>
+	<!-- 댓글 수정 -->
+	<update id="updateComment" parameterType="commentDto">
+		update comment 
+		   set content = #{content}, 
+		   	   regDate = now()
+		 where commentNo = #{commentNo}
+	</update>
+	<!-- 댓글 하나 삭제 -->
+	<delete id="deleteOneComment" parameterType="int">
+		delete 
+		  from comment
+		 where commentNo = #{commentNo}
+	</delete>
+</mapper>
+

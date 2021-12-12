@@ -1,0 +1,9 @@
+.selector {
+  width: 25rem;
+  padding: 2px 1rem;
+  background-color: white;
+}
+
+#search-btn i {
+  font-size: 1rem;
+}

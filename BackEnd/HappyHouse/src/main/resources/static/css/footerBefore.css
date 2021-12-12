@@ -1,0 +1,28 @@
+@import "reset.css";
+@import "common.css";
+
+#contacts {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: var(--size-large);
+}
+
+.contacts__title {
+  margin-bottom: var(--size-medium);
+}
+
+.contacts__items {
+  margin-bottom: var(--size-large);
+}
+
+.contacts__item {
+  margin-bottom: var(--size-small);
+}
+
+.contacts__item__icon {
+  margin-right: var(--size-medium);
+}
+
+.contacts__item span {
+  color: var(--color-black);
+}

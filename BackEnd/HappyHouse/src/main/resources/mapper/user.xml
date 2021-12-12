@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.ssafy.happyhouse.repository.mapper.UserMapper">
+	<!-- 사용자 등록 -->
+	<insert id="insertUser" parameterType="userDto">
+		insert into user (
+			email, password, name, address, joinDate 
+		) values (
+			#{email}, #{password}, #{name}, #{address}, now()
+		)
+	</insert>
+	<!-- 일반 사용자 전체 조회 -->
+	<select id="selectAllUser" resultType="userDto">
+		select userNo, email, name, address, joinDate, auth
+		  from user
+	</select>
+	<!-- 사용자 상세 조회 -->
+	<select id="selectOneUser" parameterType="String" resultType="userDto">
+		select email, password, name, address, date_format(joinDate, '%y.%m.%d') joinDate, auth
+		  from user
+		 where email = #{email}
+	</select>
+	<!-- 사용자 로그인 -->
+	<select id="selectLogin" parameterType="userDto" resultType="userDto">
+		select name, email 
+		  from user 
+		 where email = #{email}
+		   and password = #{password}
+	</select>
+	<!-- 사용자 정보 수정 -->
+	<update id="updateUser" parameterType="userDto">
+		update user
+		<trim prefix="set" suffixOverrides=",">
+			<if test="password != null">password = #{password},</if>
+			<if test="name != null">name = #{name},</if>
+			<if test="address != null">address = #{address},</if>
+		</trim>
+		 where email = #{email}
+	</update>
+	<!-- 사용자 정보 삭제 -->
+	<delete id="deleteUser" parameterType="String">
+		delete
+		  from user
+		 where email = #{email}
+	</delete>
+</mapper>

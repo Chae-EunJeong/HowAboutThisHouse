@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.ssafy.happyhouse.repository.mapper.QnaMapper">
+	<!-- QnA 등록 -->
+	<insert id="insertQna" parameterType="qnaDto">
+		insert into qna (
+			email, name, qnaTitle, qnaContent, originNo, groupOrd
+		) values (
+			#{email}, #{name}, #{qnaTitle}, #{qnaContent}, #{originNo}, #{groupOrd}
+		)
+	</insert>
+	<!-- QnA 등록 후 원글 originNo 업데이트 -->
+	<update id="updateOriginNo" parameterType="qnaDto">
+		update qna
+		   set originNo = last_insert_id()
+		 where qnaNo = last_insert_id()
+	</update>
+	<!-- QnA 키워드 검색 - 제목, 내용 -->
+	<sql id="search">
+		<if test="word != null and word != ''">
+			<if test="key == 'qnaTitle'">
+				and qnaTitle like concat('%', #{word}, '%')
+			</if>
+			<if test="key != 'qnaTitle'">
+				and qnaContent like concat('%', #{word}, '%')
+			</if>
+		</if>
+	</sql>
+	<!-- QnA 전체 조회 -->
+	<select id="selectAllQna" parameterType="map" resultType="qnaDto">
+		select qnaNo, email, name, qnaTitle, qnaContent, viewCnt,
+				case when date_format(regDate, '%Y%m%d') = date_format(now(), '%Y%m%d')
+				then date_format(regDate, '%H:%i:%s')
+				else date_format(regDate, '%y.%m.%d')
+				end regDate
+		  from qna
+		<where>
+			<include refid="search"></include>
+		</where>
+		 order by originNo desc, groupOrd asc
+		 limit #{start}, #{spp}
+	</select>
+	<!-- QnA 수 -->
+	<select id="getTotalCount" parameterType="map" resultType="int">
+		select count(qnaNo)
+		  from qna
+		<where>
+			<include refid="search"></include>
+		</where>
+	</select>
+	<!-- QnA 상세 조회 -->
+	<select id="selectOneQna" parameterType="map" resultType="qnaDto">
+		select qnaNo, email, name, qnaTitle, qnaContent, viewCnt, regDate
+		  from qna
+		 where qnaNo = ${qnaNo}
+	</select>
+	<!-- QnA 조회수 -->
+	<update id="updateViewCnt" parameterType="int">
+		update qna
+		   set viewCnt = viewCnt + 1
+		 where qnaNo = ${qnaNo}
+	</update>
+	<!-- QnA 수정 -->
+	<update id="updateQna" parameterType="qnaDto">
+		update qna
+		   set qnaTitle = #{qnaTitle}, 
+		   	   qnaContent = #{qnaContent}
+		 where qnaNo = #{qnaNo}
+	</update>
+	<!-- QnA 삭제 -->
+	<delete id="deleteQna" parameterType="int">
+		delete 
+		  from qna
+		 where qnaNo = #{qnaNo}
+	</delete>
+</mapper>
